@@ -29,7 +29,7 @@ function getColumnHeadings (sheet) {
 
   for (var i in header) {
     var ref = header[i]
-    if (ref !== '') {
+    if (header[i] !== '') {
       columns[ref] = i
     }
   }
@@ -127,8 +127,9 @@ function main () {
        
        console.log('Sending Email to: ' + email)
        
-       MailApp.sendEmail(email, subject, plainBody, {
-         htmlBody: htmlBody
+       MailApp.sendEmail(email, subject, plainBody,{
+         htmlBody: htmlBody,
+         name: row[columns['Sender']]
        })
  
        emailMap[email] = true
